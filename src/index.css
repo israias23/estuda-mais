@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paleta semântica em variáveis (canais RGB) para alternar claro/escuro.
+   Acentos (violet/ember/mint/gold/sky) permanecem fixos. */
+:root {
+  --c-cloud: 246 245 251;
+  --c-surface: 255 255 255;
+  --c-ink: 26 24 48;
+  --c-line: 233 231 244;
+  --c-slatey: 108 106 134;
+  --c-faint: 155 153 181;
+  --c-wash: 239 235 253;
+}
+.dark {
+  --c-cloud: 18 16 36;
+  --c-surface: 30 28 54;
+  --c-ink: 236 234 251;
+  --c-line: 47 44 76;
+  --c-slatey: 167 164 197;
+  --c-faint: 120 117 156;
+  --c-wash: 41 35 74;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cloud text-ink font-body antialiased;
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-violet ring-offset-2 ring-offset-cloud;
+  }
+  ::selection { background: rgba(91,63,230,0.18); }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl2 bg-surface border border-line shadow-soft;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .field {
+    @apply w-full rounded-xl2 border-2 border-line bg-surface px-4 py-3 text-ink
+           placeholder:text-faint transition-colors focus:border-violet;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .tap { @apply transition-transform active:scale-[0.97]; }
+  .text-balance { text-wrap: balance; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Confete de celebração */
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed; top: 0; width: 9px; height: 14px;
+  border-radius: 2px; pointer-events: none; z-index: 60;
+  animation: confetti-fall linear forwards;
+}
+
+/* Brilho deslizante para cartões de destaque */
+.shine { position: relative; overflow: hidden; }
+.shine::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* Tipografia rica do conteúdo de estudo */
+.prose-study p { @apply text-ink/90 leading-[1.75]; }
+.prose-study strong { @apply font-semibold text-ink; }

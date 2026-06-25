@@ -1,0 +1,15 @@
+{
+  "name": "estuda-mais-server",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Servidor que protege a chave da API e gera questões com a IA da Anthropic.",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "web-push": "^3.6.7"
+  }
+}

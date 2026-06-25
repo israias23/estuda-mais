@@ -1,0 +1,25 @@
+{
+  "name": "Estuda+ — Trilhas de estudo",
+  "short_name": "Estuda+",
+  "description": "Trilhas gamificadas para ENEM, concursos, programação, cibersegurança e sistemas. Estude em pequenas missões, mantenha a ofensiva e conquiste certificados.",
+  "id": "/",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#F6F5FB",
+  "theme_color": "#5B3FE6",
+  "lang": "pt-BR",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Continuar estudando", "short_name": "Estudar", "url": "/app" },
+    { "name": "Fórum", "short_name": "Fórum", "url": "/app/forum" },
+    { "name": "Ranking", "short_name": "Ranking", "url": "/app/ranking" }
+  ]
+}
